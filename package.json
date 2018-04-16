@@ -1,0 +1,55 @@
+{
+  "name": "@liquid-state/ui-kit-react-jsonschema-form",
+  "version": "0.1.0",
+  "description": "React JSON Schema Form widgets implemented with @liquid-state/ui-kit",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint ./src --ext .js,.jsx",
+    "lint:fix": "eslint ./src --fix --ext .js,.jsx",
+    "build": "babel --copy-files --source-maps --out-dir ./dist ./src",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "Liquid State <dev@liquid-state.com> https://github.com/liquid-state",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "@liquid-state/ui-kit": "^0.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.3.1"
+  },
+  "devDependencies": {
+    "@liquid-state/ui-kit": "^0.2",
+    "antd": "^3.3.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-import": "^1.6.7",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "husky": "^0.15.0-rc.13",
+    "lint-staged": "^7.0.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.3.1"
+  }
+}

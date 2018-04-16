@@ -1,0 +1,22 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "plugins": [
+        "react",
+        "import"
+    ],
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "react/jsx-filename-extension": 0,
+        "react/jsx-indent": 0,
+        "jsx-a11y/heading-has-content": 0,
+        "react/forbid-prop-types": ["error", {
+            "forbid": ["any"]
+        }],
+        "prefer-const": ["error", {
+            "destructuring": "all"
+        }]
+    }
+}
