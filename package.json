@@ -7,7 +7,9 @@
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --fix --ext .js,.jsx",
     "build": "babel --copy-files --source-maps --out-dir ./dist ./src",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "dist"
@@ -31,8 +33,7 @@
     "react-dom": "^16.3.1"
   },
   "devDependencies": {
-    "@liquid-state/ui-kit": "^0.2",
-    "antd": "^3.3.1",
+    "@liquid-state/ui-kit": "^0.2.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -41,6 +42,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "babel-runtime": "^7.0.0-beta.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -48,8 +50,14 @@
     "eslint-plugin-react": "^7.6.1",
     "husky": "^0.15.0-rc.13",
     "lint-staged": "^7.0.0",
-    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.3.1"
+  },
+  "dependencies": {
+    "ajv": "^6.4.0",
+    "antd": "^3.4.1",
+    "lodash.topath": "^4.5.2",
+    "prop-types": "^15.6.0",
+    "setimmediate": "^1.0.5"
   }
 }
