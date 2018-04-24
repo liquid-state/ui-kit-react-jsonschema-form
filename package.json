@@ -7,9 +7,7 @@
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --fix --ext .js,.jsx",
     "build": "babel --copy-files --source-maps --out-dir ./dist ./src",
-    "prepack": "npm run build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "prepack": "npm run build"
   },
   "files": [
     "dist"
