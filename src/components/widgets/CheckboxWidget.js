@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox } from 'antd';
-import DescriptionField from '../fields/DescriptionField';
+import { Checkbox } from '@liquid-state/ui-kit';
+import DescriptionField from 'react-jsonschema-form/lib/components/fields/DescriptionField';
 
 function CheckboxWidget(props) {
   const {
@@ -20,7 +20,7 @@ function CheckboxWidget(props) {
       {schema.description && (
         <DescriptionField description={schema.description} />
       )}
-      <label>
+      <label htmlFor={id}>
         <Checkbox
           id={id}
           checked={typeof value === 'undefined' ? false : value}
@@ -48,7 +48,16 @@ if (process.env.NODE_ENV !== 'production') {
     disabled: PropTypes.bool,
     readonly: PropTypes.bool,
     autofocus: PropTypes.bool,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+    label: PropTypes.string,
+  };
+
+  CheckboxWidget.defaultProps = {
+    value: false,
+    required: false,
+    disabled: false,
+    readonly: false,
+    label: '',
   };
 }
 

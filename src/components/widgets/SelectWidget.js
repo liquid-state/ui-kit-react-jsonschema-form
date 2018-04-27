@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
 
-import { asNumber } from '../../utils';
+import { asNumber } from 'react-jsonschema-form/lib/utils';
 
 
 function processValue({ type, items }, value) {
@@ -78,10 +78,10 @@ function SelectWidget(props) {
       }}
     >
       {!multiple && !schema.default && <Select.Option value="">{placeholder}</Select.Option>}
-      {enumOptions.map(({ value, label }, i) => {
-        const disabled = enumDisabled && enumDisabled.indexOf(value) != -1;
+      {enumOptions.map(({ item, label }) => {
+        const disabledComponent = enumDisabled && enumDisabled.indexOf(item) !== -1;
         return (
-          <Select.Option key={i} value={+value} disabled={disabled}>
+          <Select.Option value={+item} disabled={disabledComponent}>
             {label}
           </Select.Option>
         );
@@ -101,15 +101,27 @@ if (process.env.NODE_ENV !== 'production') {
     options: PropTypes.shape({
       enumOptions: PropTypes.array,
     }).isRequired,
-    value: PropTypes.any,
+    value: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     readonly: PropTypes.bool,
     multiple: PropTypes.bool,
     autofocus: PropTypes.bool,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
+    placeholder: PropTypes.string,
+  };
+
+  SelectWidget.defaultProps = {
+    value: '',
+    required: false,
+    disabled: false,
+    readonly: false,
+    multiple: false,
+    onBlur: null,
+    onFocus: null,
+    placeholder: '',
   };
 }
 

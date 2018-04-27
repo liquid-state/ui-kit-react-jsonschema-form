@@ -8,9 +8,9 @@ function TextWidget(props) {
 
 if (process.env.NODE_ENV !== 'production') {
   TextWidget.propTypes = {
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    id: PropTypes.string,
-    registry: PropTypes.object,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    id: PropTypes.string.isRequired,
+    registry: PropTypes.object.isRequired,
   };
 }
 

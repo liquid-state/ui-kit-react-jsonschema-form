@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Radio } from 'antd';
+import { Radio } from '@liquid-state/ui-kit';
 
 function RadioWidget(props) {
   const {
@@ -38,12 +38,12 @@ function RadioWidget(props) {
         );
 
         return inline ? (
-          <label key={i} className={`radio-inline ${disabledCls}`}>
+          <div className={`radio-inline ${disabledCls}`}>
             {radio}
-          </label>
+          </div>
         ) : (
-          <div key={i} className={`radio ${disabledCls}`}>
-            <label>{radio}</label>
+          <div className={`radio ${disabledCls}`}>
+            <div>{radio}</div>
           </div>
         );
       })}
@@ -61,12 +61,19 @@ if (process.env.NODE_ENV !== 'production') {
       enumOptions: PropTypes.array,
       inline: PropTypes.bool,
     }).isRequired,
-    value: PropTypes.any,
+    value: PropTypes.bool,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     readonly: PropTypes.bool,
     autofocus: PropTypes.bool,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+  };
+
+  RadioWidget.defaultProps = {
+    value: false,
+    required: false,
+    disabled: false,
+    readonly: false,
   };
 }
 export default RadioWidget;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {} from 'antd';
 
 function HiddenWidget({ id, value, registry }) {
   const { BaseInput } = registry.widgets;
@@ -20,7 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
       PropTypes.string,
       PropTypes.number,
       PropTypes.bool,
-    ]),
+    ]).isRequired,
+    registry: PropTypes.object.isRequired,
   };
 }
 

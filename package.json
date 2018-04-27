@@ -56,6 +56,7 @@
     "antd": "^3.4.1",
     "lodash.topath": "^4.5.2",
     "prop-types": "^15.6.0",
+    "react-jsonschema-form": "^1.0.3",
     "setimmediate": "^1.0.5"
   }
 }

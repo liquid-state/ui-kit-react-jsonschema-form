@@ -8,8 +8,7 @@ function PasswordWidget(props) {
 
 if (process.env.NODE_ENV !== 'production') {
   PasswordWidget.propTypes = {
-    value: PropTypes.string,
-    registry: PropTypes.object,
+    registry: PropTypes.object.isRequired,
   };
 }
 

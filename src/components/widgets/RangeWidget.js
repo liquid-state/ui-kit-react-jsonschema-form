@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Slider } from 'antd';
 
-import { rangeSpec } from '../../utils';
+import { rangeSpec } from 'react-jsonschema-form/lib/utils';
 
 function RangeWidget(props) {
   const {
     schema,
-    value,
-    registry: {
-      widgets: { BaseInput },
-    },
   } = props;
   return (
     <div className="field-range-wrapper">
@@ -21,7 +17,9 @@ function RangeWidget(props) {
 
 if (process.env.NODE_ENV !== 'production') {
   RangeWidget.propTypes = {
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    schema: PropTypes.object.isRequired,
+    registry: PropTypes.object.isRequired,
   };
 }
 

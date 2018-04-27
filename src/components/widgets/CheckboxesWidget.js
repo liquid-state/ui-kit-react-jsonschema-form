@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox } from 'antd';
+import { Checkbox } from '@liquid-state/ui-kit';
 
 function selectValue(value, selected, all) {
   const at = all.indexOf(value);
@@ -50,12 +50,12 @@ function CheckboxesWidget(props) {
           </span>
         );
         return inline ? (
-          <label key={index} className={`checkbox-inline ${disabledCls}`}>
+          <div className={`checkbox-inline ${disabledCls}`}>
             {checkbox}
-          </label>
+          </div>
         ) : (
-          <div key={index} className={`checkbox ${disabledCls}`}>
-            <label>{checkbox}</label>
+          <div className={`checkbox ${disabledCls}`}>
+            <div>{checkbox}</div>
           </div>
         );
       })}
@@ -74,11 +74,17 @@ if (process.env.NODE_ENV !== 'production') {
       enumOptions: PropTypes.array,
       inline: PropTypes.bool,
     }).isRequired,
-    value: PropTypes.any,
+    value: PropTypes.string,
     readonly: PropTypes.bool,
     disabled: PropTypes.bool,
     autofocus: PropTypes.bool,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+  };
+
+  CheckboxesWidget.defaultProps = {
+    value: '',
+    readonly: false,
+    disabled: false,
   };
 }
 

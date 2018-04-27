@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { dataURItoBlob, shouldRender, setState } from '../../utils';
+import { dataURItoBlob, shouldRender, setState } from 'react-jsonschema-form/lib/utils';
 
 function addNameToDataURL(dataURL, name) {
   return dataURL.replace(';base64', `;name=${name};base64`);
@@ -34,10 +34,10 @@ function FilesInfo(props) {
   }
   return (
     <ul className="file-info">
-      {filesInfo.map((fileInfo, key) => {
+      {filesInfo.map((fileInfo) => {
         const { name, size, type } = fileInfo;
         return (
-          <li key={key}>
+          <li>
             <strong>{name}</strong> ({type}, {size} bytes)
           </li>
         );
@@ -45,6 +45,10 @@ function FilesInfo(props) {
     </ul>
   );
 }
+
+FilesInfo.propTypes = {
+  filesInfo: PropTypes.any.isRequired,
+};
 
 function extractFileInfo(dataURLs) {
   return dataURLs
@@ -102,7 +106,9 @@ class FileWidget extends Component {
       <div>
         <p>
           <input
-            ref={ref => (this.inputRef = ref)}
+            ref={(ref) => {
+              this.inputRef = ref;
+            }}
             id={id}
             type="file"
             disabled={readonly || disabled}
@@ -128,8 +134,18 @@ if (process.env.NODE_ENV !== 'production') {
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
-    ]),
+    ]).isRequired,
     autofocus: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    readonly: PropTypes.bool,
+    disabled: PropTypes.bool,
+  };
+
+  FileWidget.defaultProps = {
+    readonly: false,
+    disabled: false,
+    multiple: false,
   };
 }
 

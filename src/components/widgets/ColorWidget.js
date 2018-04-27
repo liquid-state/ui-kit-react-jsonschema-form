@@ -16,12 +16,14 @@ if (process.env.NODE_ENV !== 'production') {
   ColorWidget.propTypes = {
     schema: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    required: PropTypes.bool,
+    registry: PropTypes.object.isRequired,
     disabled: PropTypes.bool,
     readonly: PropTypes.bool,
-    autofocus: PropTypes.bool,
-    onChange: PropTypes.func,
+  };
+
+  ColorWidget.defaultProps = {
+    disabled: false,
+    readonly: false,
   };
 }
 
