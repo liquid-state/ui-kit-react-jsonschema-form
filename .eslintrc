@@ -11,9 +11,11 @@
     "rules": {
         "react/jsx-filename-extension": 0,
         "react/jsx-indent": 0,
+        "react/no-unused-state": 0,
         "jsx-a11y/heading-has-content": 0,
+        "jsx-a11y/no-autofocus": 0,
         "react/forbid-prop-types": ["error", {
-            "forbid": ["any"]
+            "forbid": []
         }],
         "prefer-const": ["error", {
             "destructuring": "all"
