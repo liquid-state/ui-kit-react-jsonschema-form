@@ -137,7 +137,7 @@ if (process.env.NODE_ENV !== 'production') {
     ]).isRequired,
     autofocus: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     readonly: PropTypes.bool,
     disabled: PropTypes.bool,
   };

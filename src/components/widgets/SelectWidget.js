@@ -22,16 +22,6 @@ function processValue({ type, items }, value) {
   return value;
 }
 
-function getValue(event, multiple) {
-  if (multiple) {
-    return [].slice
-      .call(event.target.options)
-      .filter(o => o.selected)
-      .map(o => o.value);
-  }
-  return event.target.value;
-}
-
 function SelectWidget(props) {
   const {
     schema,
@@ -58,30 +48,17 @@ function SelectWidget(props) {
       required={required}
       disabled={disabled || readonly}
       autoFocus={autofocus}
-      onBlur={
-        onBlur &&
-        ((event) => {
-          const newValue = getValue(event, multiple);
-          onBlur(id, processValue(schema, newValue));
-        })
-      }
-      onFocus={
-        onFocus &&
-        ((event) => {
-          const newValue = getValue(event, multiple);
-          onFocus(id, processValue(schema, newValue));
-        })
-      }
-      onChange={(event) => {
-        const newValue = getValue(event, multiple);
+      onBlur={onBlur && onBlur(id, value)}
+      onFocus={onFocus && onFocus(id, value)}
+      onChange={(newValue) => {
         onChange(processValue(schema, newValue));
       }}
     >
       {!multiple && !schema.default && <Select.Option value="">{placeholder}</Select.Option>}
-      {enumOptions.map(({ item, label }) => {
-        const disabledComponent = enumDisabled && enumDisabled.indexOf(item) !== -1;
+      {enumOptions.map(({ value: itemValue, label }) => {
+        const disabledComponent = enumDisabled && enumDisabled.indexOf(itemValue) !== -1;
         return (
-          <Select.Option value={+item} disabled={disabledComponent}>
+          <Select.Option value={itemValue} disabled={disabledComponent}>
             {label}
           </Select.Option>
         );
