@@ -7,7 +7,9 @@
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --fix --ext .js,.jsx",
     "build": "babel --copy-files --source-maps --out-dir ./dist ./src",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "dist"
@@ -32,6 +34,10 @@
   },
   "devDependencies": {
     "@liquid-state/ui-kit": "^0.2.3",
+    "@storybook/addon-actions": "^3.4.3",
+    "@storybook/addon-links": "^3.4.3",
+    "@storybook/addons": "^3.4.3",
+    "@storybook/react": "^3.4.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -47,6 +53,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "husky": "^0.15.0-rc.13",
+    "less": "~2",
+    "less-loader": "^4.1.0",
     "lint-staged": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.3.1"
