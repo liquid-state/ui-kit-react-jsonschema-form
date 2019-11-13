@@ -4,8 +4,6 @@ import OriginalForm from 'react-jsonschema-form';
 import BaseWidgets from './components/widgets';
 import BaseFieldTemplate from './components/FieldTemplate';
 
-import './style.css';
-
 const Form = ({ widgets, FieldTemplate, ...props }) => {
   const allWidgets = { ...BaseWidgets, ...widgets };
   return (
