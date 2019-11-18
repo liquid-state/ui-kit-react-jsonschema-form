@@ -21,7 +21,7 @@ function BaseInput(props) {
   } = props;
 
   inputProps.type = options.inputType || inputProps.type || 'text';
-  const onChange = ({ target }) => props.onChange(value === '' ? options.emptyValue : target.value);
+  const onChange = ({ target }) => props.onChange(target.value === '' ? options.emptyValue : target.value);
 
   const { rawErrors, ...cleanProps } = inputProps;
 
