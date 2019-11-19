@@ -10,7 +10,7 @@ function DateWidget(props) {
     },
   } = props;
 
-  if (true || navigator.userAgent.includes('Android')) {
+  if (navigator.userAgent.includes('Android')) {
     return (
       <AntDatePicker
         {...props}
