@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DatePicker as AntDatePicker, Input } from 'antd';
+import { Input } from 'antd';
 
 function BaseInput(props) {
   if (!props.id) {
@@ -24,19 +24,6 @@ function BaseInput(props) {
   const onChange = ({ target }) => props.onChange(target.value === '' ? options.emptyValue : target.value);
 
   const { rawErrors, ...cleanProps } = inputProps;
-
-  if (inputProps.type === 'date' && navigator.userAgent.includes('Android')) {
-    return (
-      <AntDatePicker
-        disabled={disabled}
-        autoFocus={autofocus}
-        {...cleanProps}
-        onChange={date => props.onChange(date.format('YYYY-MM-DD'))}
-        onBlur={onBlur && (event => onBlur(inputProps.id, event.target.value))}
-        onFocus={onFocus && (event => onFocus(inputProps.id, event.target.value))}
-      />
-    );
-  }
 
   return (
     <Input
