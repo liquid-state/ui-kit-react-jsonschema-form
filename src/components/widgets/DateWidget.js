@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { DatePicker as AntDatePicker } from 'antd';
 
 function DateWidget(props) {
@@ -14,20 +15,15 @@ function DateWidget(props) {
     return (
       <AntDatePicker
         {...props}
-        onChange={date => props.onChange(date.format('YYYY-MM-DD'))}
-        onBlur={props.onBlur && (event => props.onBlur(props.id, event.target.value))}
-        onFocus={props.onFocus && (event => props.onFocus(props.id, event.target.value))}
+        value={moment(props.value)}
+        onChange={(date) => props.onChange(date.format('YYYY-MM-DD'))}
+        onBlur={props.onBlur && ((event) => props.onBlur(props.id, event.target.value))}
+        onFocus={props.onFocus && ((event) => props.onFocus(props.id, event.target.value))}
       />
     );
   }
 
-  return (
-    <BaseInput
-      type="date"
-      {...props}
-      onChange={value => onChange(value || undefined)}
-    />
-  );
+  return <BaseInput type="date" {...props} onChange={(value) => onChange(value || undefined)} />;
 }
 
 if (process.env.NODE_ENV !== 'production') {
