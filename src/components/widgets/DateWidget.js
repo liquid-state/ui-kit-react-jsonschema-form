@@ -16,14 +16,14 @@ function DateWidget(props) {
       <AntDatePicker
         {...props}
         value={moment(props.value)}
-        onChange={(date) => props.onChange(date.format('YYYY-MM-DD'))}
-        onBlur={props.onBlur && ((event) => props.onBlur(props.id, event.target.value))}
-        onFocus={props.onFocus && ((event) => props.onFocus(props.id, event.target.value))}
+        onChange={date => props.onChange(date.format('YYYY-MM-DD'))}
+        onBlur={props.onBlur && (event => props.onBlur(props.id, event.target.value))}
+        onFocus={props.onFocus && (event => props.onFocus(props.id, event.target.value))}
       />
     );
   }
 
-  return <BaseInput type="date" {...props} onChange={(value) => onChange(value || undefined)} />;
+  return <BaseInput type="date" {...props} onChange={value => onChange(value || undefined)} />;
 }
 
 if (process.env.NODE_ENV !== 'production') {
@@ -38,7 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
 
   DateWidget.defaultProps = {
-    value: '',
+    value: undefined,
     id: undefined,
     onBlur: () => {},
     onFocus: () => {},
