@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { DatePicker as AntDatePicker } from 'antd';
@@ -11,6 +11,15 @@ function DateWidget(props) {
     },
   } = props;
 
+  const setReadOnly = useCallback((open) => {
+    if (!open) return;
+
+    setTimeout(() => {
+      const d = document.querySelector('.ant-calendar-picker-container input');
+      d.setAttribute('readonly', true);
+    }, 10);
+  });
+
   if (navigator.userAgent.includes('Android')) {
     return (
       <AntDatePicker
@@ -19,6 +28,7 @@ function DateWidget(props) {
         onChange={date => props.onChange(date.format('YYYY-MM-DD'))}
         onBlur={props.onBlur && (event => props.onBlur(props.id, event.target.value))}
         onFocus={props.onFocus && (event => props.onFocus(props.id, event.target.value))}
+        onOpenChange={open => setReadOnly(open)}
       />
     );
   }
