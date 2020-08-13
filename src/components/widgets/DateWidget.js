@@ -28,7 +28,7 @@ function DateWidget(props) {
         onChange={date => props.onChange(date.format('YYYY-MM-DD'))}
         onBlur={props.onBlur && (event => props.onBlur(props.id, event.target.value))}
         onFocus={props.onFocus && (event => props.onFocus(props.id, event.target.value))}
-        onOpenChange={open => setReadOnly(open)}
+        onOpenChange={setReadOnly}
       />
     );
   }
