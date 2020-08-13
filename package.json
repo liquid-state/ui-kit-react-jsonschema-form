@@ -1,6 +1,6 @@
 {
   "name": "@liquid-state/ui-kit-react-jsonschema-form",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "React JSON Schema Form widgets implemented with @liquid-state/ui-kit",
   "main": "dist/index.js",
   "scripts": {

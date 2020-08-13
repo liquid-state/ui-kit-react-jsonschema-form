@@ -15,8 +15,8 @@ function DateWidget(props) {
     if (!open) return;
 
     setTimeout(() => {
-      const d = document.querySelector('.ant-calendar-picker-container input');
-      d.setAttribute('readonly', true);
+      const ds = document.querySelectorAll('.ant-calendar-picker-container input');
+      ds.forEach(d => d.setAttribute('readonly', true));
     }, 10);
   });
 
