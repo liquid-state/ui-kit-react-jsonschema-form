@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved, import/extensions */
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -18,7 +19,7 @@ function DateWidget(props) {
       const ds = document.querySelectorAll('.ant-calendar-picker-container input');
       ds.forEach(d => d.setAttribute('readonly', true));
     }, 10);
-  });
+  }, []);
 
   if (navigator.userAgent.includes('Android')) {
     return (
