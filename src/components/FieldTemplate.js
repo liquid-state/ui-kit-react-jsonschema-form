@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved,import/extensions */
 import React from 'react';
 import { Form } from 'antd';
 
@@ -7,17 +8,19 @@ const FieldTemplate = (props) => {
   const {
     id, classNames, label, help, required, description, errors, children, displayLabel,
   } = props;
+  // object fields display the description themselves
+  // for all other fields, we need to display it before children
+  const itemDesc = props.schema.type !== 'object' ? description : null;
   return (
     <React.Fragment>
-      {description}
       {
         displayLabel
           ? (
             <Form.Item label={`${label}${required ? '*' : ''}`} id={id} classNames={classNames}>
-              {children}
+              {[itemDesc, ...children]}
             </Form.Item>
           )
-          : children
+          : [itemDesc, ...children]
       }
       {errors}
       {help}
