@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Radio } from "@liquid-state/ui-kit";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Radio } from '@liquid-state/ui-kit';
 
 function RadioWidget(props) {
   const {
@@ -18,10 +18,10 @@ function RadioWidget(props) {
   // checked={checked} has been moved above name={name}, As mentioned in #349;
   // this is a temporary fix for radio button rendering bug in React, facebook/react#7630.
   return (
-    <Radio.Group defaultValue={value}>
+    <Radio.Group defaultValue={value} value={value}>
       {enumOptions.map((option, i) => {
-        const checked = option.value === value;
-        const disabledCls = disabled || readonly ? "disabled" : "";
+        const checked = option.value == value;
+        const disabledCls = disabled || readonly ? 'disabled' : '';
         const radio = (
           <span>
             <Radio
@@ -53,7 +53,7 @@ RadioWidget.defaultProps = {
   autofocus: false,
 };
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   RadioWidget.propTypes = {
     options: PropTypes.shape({
       enumOptions: PropTypes.array,
