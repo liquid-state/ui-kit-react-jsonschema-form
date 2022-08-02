@@ -31,6 +31,7 @@ function BaseInput(props) {
       disabled={disabled}
       autoFocus={autofocus}
       value={value == null ? '' : value}
+      inputMode={options.inputMode || 'text'}
       {...cleanProps}
       onChange={onChange}
       onBlur={onBlur && (event => onBlur(inputProps.id, event.target.value))}
